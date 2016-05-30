@@ -59,8 +59,7 @@ if (group2Color == "Condition") {
     pal <- getPaletteForLabels(labels)
     }else { pal <- getPaletteForReplicates(ncol(qData))}
 
-print("boxplot")
-print(pal)
+
 boxplot(qData
         ,las = 1
         , col = pal
@@ -294,8 +293,6 @@ if (group2Color == "Condition") {
                         labelsForLegend,sep=" ")
     txtLegend <- txtLegend[indData2Show]
 }
-print("densiyplot")
-print(pal)
 
 ###Erase data not to show (color in white)
 # lineWD <- NULL
@@ -368,6 +365,7 @@ varianceDistD(qData, labels)
 ##' @seealso \code{\link{densityPlotD}}.
 ##' @examples
 ##' data(UPSpep25)
+##' labels <- Biobase::pData(UPSpep25)[,"Label"]
 ##' varianceDistD(UPSpep25)
 varianceDistD <- function(qData, labels=NULL){
     
@@ -376,10 +374,13 @@ conditions <- unique(labels)
 n <- length(conditions)
 axis.limits <- matrix(data = 0, nrow = 4, ncol = n)
 for (i in conditions){
+    if (length(which(labels == i)) > 1){
     t <- density(apply(qData[,which(labels == i)], 1, 
                     function(x) var(x, na.rm=TRUE)), na.rm=TRUE)
+
     axis.limits[,which(conditions == i)]<- c(min(t$x), max(t$x), min(t$y),
                                             max(t$y))
+    }
 }
 
 lim.x <- range(min(axis.limits[1,]), max(axis.limits[2,]))
@@ -399,13 +400,15 @@ pal <- getPaletteForLabels(labels)
 conditions <- unique(labels)
 col.density = c(1:length(conditions))
 for (i in conditions){
-    t <- apply(qData[,which(labels == i)], 1, 
+    if (length(which(labels == i)) > 1){
+        t <- apply(qData[,which(labels == i)], 1, 
                 function(x) var(x, na.rm = TRUE))
     lines(density(t, na.rm = TRUE)
         , xlab=""
         , ylab=""
         , col=col.density[which(conditions == i)]
     )
+    }
 }
 
 legend("topright"         
@@ -479,13 +482,11 @@ d <- qplot(x = Var1,
         legend.text = text,
         legend.title = text) +
     labs(x = "", y = "") +
-    #scale_fill_gradient2(midpoint=0.5, space="Lab",low = "white",mid = 
-    #"white", high = "steelblue", limits=c(0.1,1))
-#scale_fill_gradientn(colours=cscale(seq(0.1,1,0.1), 
-#seq_gradient_pal("grey80", "black")),trans=exp_trans(), limits=c(0.1,1))
+
     scale_fill_gradientn (
     colours=colorRampPalette (c ("white", "lightblue","darkblue")) (101),
     values = c(pexp(seq(0,1,0.01), rate=gradientRate),1), limits=c(0,1))
+
 plot(d)
 }
 

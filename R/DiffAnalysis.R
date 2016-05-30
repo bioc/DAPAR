@@ -25,7 +25,7 @@
 ##' labels <- Biobase::pData(obj)[,"Label"]
 ##' limma <- diffAnaLimma(qData,samplesData, labels, condition1, condition2)
 ##' diffAnaComputeFDR(limma)
-diffAnaComputeFDR <- function(data,threshold_PVal=0, threshold_LogFC =0, 
+diffAnaComputeFDR <- function(data,threshold_PVal=0, threshold_LogFC = 0, 
                             pi0Method=1){
     upItems <- which(abs(data$logFC) >= threshold_LogFC)
     selectedItems <- data[upItems,]$P.Value

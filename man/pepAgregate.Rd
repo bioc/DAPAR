@@ -29,8 +29,8 @@ a MSnSet object (peptides)
 \examples{
 data(UPSpep25)
 protID <- "Protein.group.IDs"
-m <- BuildAdjacencyMatrix(UPSpep25, protID, TRUE)
-pepAgregate(UPSpep25, protID, "sum")
+mat <- BuildAdjacencyMatrix(UPSpep25, protID, TRUE)
+pepAgregate(UPSpep25, protID, "sum", mat)
 }
 \author{
 Alexia Dorffer, Samuel Wieczorek

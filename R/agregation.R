@@ -292,8 +292,8 @@ topMaxUsingPartialSortIndices <- function(x, n) {
 ##' @examples 
 ##' data(UPSpep25)
 ##' protID <- "Protein.group.IDs"
-##' m <- BuildAdjacencyMatrix(UPSpep25, protID, TRUE)
-##' pepAgregate(UPSpep25, protID, "sum")
+##' mat <- BuildAdjacencyMatrix(UPSpep25, protID, TRUE)
+##' pepAgregate(UPSpep25, protID, "sum", mat)
 pepAgregate <- function (obj.pep, protID, method="sum",matAdj=NULL, n=NULL){
     #Check the validity of parameters
     parammethod <- c("sum overall", "mean", "sum on top n") 
