@@ -1,7 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 
 import(MSnbase)
-import(DAPARdata)
 import(RColorBrewer)
 import(Cairo)
 import(png)
@@ -15,6 +14,7 @@ import(knitr)
 importFrom("doParallel", "registerDoParallel")
 importFrom("foreach", "foreach", "%dopar%")
 importFrom("parallel", "detectCores")
+importFrom("Matrix", "sparseMatrix")
 import(cp4p)
 importFrom("graphics", "par", "boxplot", "axis", "mtext", "abline", "points", 
             "legend", "lines",  "barplot", "text",
@@ -23,24 +23,23 @@ import(Biobase)
 
 importFrom("stats", "lowess", "cor", "density","pexp", 
             "var", "t.test", "dist", "hclust", "setNames", 
-            "median", "p.adjust")
+            "median", "p.adjust", "model.matrix", "rnorm")
 importFrom("imputeLCMD", "impute.wrapper.KNN", "impute.wrapper.MLE",
             "impute.QRILC")
 importFrom("preprocessCore", "normalize.quantiles")
 importFrom("gplots", "heatmap.2")
-importFrom("XLConnect", "loadWorkbook", "createSheet", 
-            "writeWorksheet", "saveWorkbook")
-importFrom("limma", "lmFit", "eBayes", "topTable")
+importFrom("limma", "lmFit", "eBayes", "topTable", "makeContrasts", "contrasts.fit")
 importFrom("pcaMethods", "completeObs", "pca")
 importFrom("scales", "alpha")
 importFrom("grDevices", "colorRampPalette", "palette", "heat.colors")
 importFrom("utils", "read.csv")
+importFrom("XLConnect", "loadWorkbook", "createSheet", 
+            "writeWorksheet", "saveWorkbook")
 
 
 export(
-"writeMSnsetToExcel"
-,"createMSnset"
-
+"writeMSnsetToExcel",
+"createMSnset"
 
 ,"wrapper.boxPlotD","boxPlotD"
 ,"wrapper.densityPlotD","densityPlotD"
