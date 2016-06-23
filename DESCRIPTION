@@ -1,8 +1,8 @@
 Package: DAPAR
 Type: Package
 Title: Tools for the Differential Analysis of Proteins Abundance with R
-Version: 1.4.4
-Date: 2016-06-14
+Version: 1.4.6
+Date: 2016-06-23
 Authors@R: c(person(given = "Samuel", family = "Wieczorek",
             email = "samuel.wieczorek@cea.fr",
     role = c("aut","cre")),
@@ -29,8 +29,8 @@ Description: This package contains a collection of functions for the
 License: Artistic-2.0
 VignetteBuilder: knitr
 Depends: R (>= 3.3)
-Suggests: BiocGenerics, testthat, BiocStyle, Prostar
-Imports: Biobase, MSnbase, RColorBrewer,stats,preprocessCore,Cairo,png,
+Suggests: BiocGenerics, Biobase, testthat, BiocStyle, Prostar
+Imports: MSnbase, RColorBrewer,stats,preprocessCore,Cairo,png,
         lattice,reshape2,gplots,pcaMethods,ggplot2,
         limma,knitr,tmvtnorm,norm,impute, imputeLCMD, doParallel,
         parallel, foreach,grDevices, graphics, XLConnect, utils, cp4p

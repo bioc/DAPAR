@@ -421,7 +421,6 @@ for (iCond in unique(conditions)){
 }
 
 
-
 plot(c(mTemp),
         rep(-1,length(c(mTemp))),
         xlim = range(c(mTemp), na.rm = TRUE),
@@ -432,15 +431,12 @@ plot(c(mTemp),
 
 
     points(c(mTemp),
-            jitter(c(nbNA), 0.0), 
+            jitter(c(nbNA), 0.3), 
             col = alpha(c(colorTemp), 0.5),
             pch = 16,
             cex=0.8)
-    
-    lines(lowess(c(nbNA) ~ c(mTemp),
-                delta = 0.1 * diff(range(c(mTemp), na.rm = TRUE))), 
-        col="black", lwd=2)
-    abline(v=threshold, col="blue", lwd=3)
+
+  #  abline(v=threshold, col="blue", lwd=3)
 
 
 legend("topright"         

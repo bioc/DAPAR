@@ -29,7 +29,7 @@ diffAnaComputeFDR <- function(data,threshold_PVal=0, threshold_LogFC = 0,
                             pi0Method=1){
     upItems <- which(abs(data$logFC) >= threshold_LogFC)
     selectedItems <- data[upItems,]$P.Value
-    
+
     padj <- adjust.p(selectedItems,  pi0Method)
     
     items <- which(-log10(padj$adjp[,1]) >= threshold_PVal)

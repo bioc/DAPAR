@@ -19,7 +19,7 @@ import(cp4p)
 importFrom("graphics", "par", "boxplot", "axis", "mtext", "abline", "points", 
             "legend", "lines",  "barplot", "text",
            "layout", "plot.new", "strheight", "strwidth", "title")
-import(Biobase)
+
 
 importFrom("stats", "lowess", "cor", "density","pexp", 
             "var", "t.test", "dist", "hclust", "setNames", 
@@ -72,6 +72,7 @@ export(
 ,"BuildAdjacencyMatrix"
 ,"GraphPepProt"
 ,"BuildColumnToProteinDataset"
+,"getProteinsStats"
 
 
 ,"wrapper.diffAnaLimma","diffAnaLimma"

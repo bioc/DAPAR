@@ -1,3 +1,40 @@
+##' This function computes the number of proteins that are only defined by 
+##' specific peptides, shared peptides or a mixture of two. 
+##' 
+##' @title computes the number of proteins that are only defined by 
+##' specific peptides, shared peptides or a mixture of two.
+##' @param matUnique The adjacency matrix with only specific peptides.
+##' @param matShared The adjacency matrix with both specific and shared peptides.
+##' @return A list
+##' @author Samuel Wieczorek
+##' @examples
+##' data(UPSpep25)
+##' protID <- "Protein.group.IDs"
+##' MShared <- BuildAdjacencyMatrix(UPSpep25, protID, FALSE)
+##' MUnique <- BuildAdjacencyMatrix(UPSpep25, protID, TRUE)
+##' getProteinsStats(MUnique,MShared)
+getProteinsStats <- function(matUnique, matShared){
+    if (is.null(matUnique) || is.null(matShared) ||
+        !is.matrix(matUnique) || !is.matrix(matShared)){return(NULL)}
+    
+    t <- setdiff(union(rownames(matUnique), rownames(matShared)), intersect(rownames(matUnique), rownames(matShared)))
+    sharedPeptides <- matShared[t,]
+    sharedPeptides <- sharedPeptides[,-which(colSums(sharedPeptides)==0)]
+    protOnlyUnique <- setdiff(union(colnames(sharedPeptides), colnames(matShared)), intersect(colnames(sharedPeptides), colnames(matShared)))
+    
+    protOnlyShared <- setdiff(union(colnames(matUnique), colnames(matShared)), intersect(colnames(matUnique), colnames(matShared)))
+    a <- union(protOnlyUnique, protOnlyShared)
+    b <- colnames(matShared)
+    protMix <- setdiff(union(union(protOnlyUnique, protOnlyShared),colnames(matShared)),intersect(union(protOnlyUnique, protOnlyShared),colnames(matShared)))
+
+    return (list(protOnlyUniquePep =protOnlyUnique,
+                  protOnlySharedPep =protOnlyShared,
+                  protMixPep = protMix))
+}
+
+
+
+
 ##' This function creates a column for the protein dataset after agregation 
 ##' by using the previous peptide dataset.
 ##' 
