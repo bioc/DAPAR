@@ -182,7 +182,7 @@ diffAna <- function(qData, design){
 
     fit <- lmFit(qData, design)
     fit <- eBayes(fit)
-
+    #  fit$df.prior
     diffAna.res <- topTable(fit,
                             coef = 2, 
                             sort.by = "none",
