@@ -2,6 +2,15 @@ CHANGES IN VERSION 1.4.7
 ------------------------ 
 
 NEW FEATURES
+
+BUG FIXES
+    * A bug in the creation of a MSnSet file has been fixed. This bug generated the following error           message : "The condition have length > 1 and only the first argument is used"
+    
+    
+    CHANGES IN VERSION 1.4.7
+------------------------ 
+
+NEW FEATURES
     * In the export tool, when the user chooses the Excel format, the ID is no longer        used to create a new column in the Quantitative Tab. This has no effect on the data.
 
 BUG FIXES

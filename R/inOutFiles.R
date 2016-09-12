@@ -66,7 +66,7 @@ data <- read.csv(file, header=TRUE, sep="\t", as.is=TRUE)
     colnames(fd) <- colnames(data)[indFData]
 
     ##building pData of MSnSet file
-    pd <- metadata
+    pd <- as.data.frame(metadata)
     rownames(pd) <- pd$Experiment
 
     ##Integrity tests

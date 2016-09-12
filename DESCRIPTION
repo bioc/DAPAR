@@ -1,8 +1,8 @@
 Package: DAPAR
 Type: Package
 Title: Tools for the Differential Analysis of Proteins Abundance with R
-Version: 1.4.7
-Date: 2016-06-27
+Version: 1.4.8
+Date: 2016-09-12
 Authors@R: c(person(given = "Samuel", family = "Wieczorek",
             email = "samuel.wieczorek@cea.fr",
     role = c("aut","cre")),
@@ -39,4 +39,4 @@ biocViews: Proteomics, Normalization, Preprocessing, MassSpectrometry,
         QualityControl, DataImport
 NeedsCompilation: no
 RoxygenNote: 5.0.1
-Packaged: 2016-06-15 06:19:59 UTC; sw175264
+Packaged: 2016-06-28 05:32:48 UTC; biocbuild
